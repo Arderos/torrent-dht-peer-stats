@@ -8,7 +8,7 @@ import time
 import os
 
 IP_API_URL = "http://ip-api.com/json/{}"
-RATE_LIMIT = 45  # requests per minute
+RATE_LIMIT = 40  # requests per minute
 COLLECTION_TIME = 120 #seconds
 
 def get_ip_info(ip):
@@ -63,7 +63,7 @@ def main(args):
     last_timestamp = time.time()
     for peer in peers:
         if time.time() - last_timestamp >= 60 / RATE_LIMIT:
-            time.sleep(1)
+            time.sleep(5)
             last_timestamp = time.time()
 
         info = get_ip_info(peer)
